@@ -30,7 +30,12 @@ const transactionResolver = {
 
         // add category statistics query
     },
-    Mutation:{}
+
+    Mutation:{
+        createTransaction: async (parents, args, context) => {},
+        updateTransaction: async (parents, args, context) => {},
+        deleteTransaction: async (parents, args, context) => {},
+    }
 }
 
 export default transactionResolver;
