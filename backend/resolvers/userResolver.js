@@ -75,15 +75,28 @@ const userResolver = {
 
     Query: {
         
-        users: (_,{req,res}) => {
-            return users;
+        authUser: async() => {
+           try {
+            const user = await context.getUser();
+            return user;
+           } catch (err) {
+             console.log("Error in authUser", err);
+             throw new Error("Internal server error"); 
+           }
         },
-        
-        user: (_, {userId}) => {
-        return users.find((user) => user._id === userId)
-       },
+
+        user: async (_,{userId}) => {
+            try {
+                const user  = await User.findById(userId)
+                return user
+            } catch (err) {
+                console.log("Error in user query", err);
+               throw new Error(err.message || "Error in getting user"); 
+            }
+        },
     
     },
+    // add user user/transaction
 }
 
 export default userResolver
