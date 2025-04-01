@@ -12,11 +12,14 @@ import { buildContext } from "graphql-passport";
 import mergedResolvers from "./resolvers/index.js" 
 import mergedTypeDefs from "./typeDefs/index.js"
 import { connectDB } from './db/connectDB.js';
+import { configurePassport } from './passport/passportConfig.js';
 
 
 
 dotenv.config(); // If don't call the .envfn() we won't be able to use env variables
- 
+
+configurePassport();
+
 const app = express();
 const httpServer = http.createServer(app);
 
