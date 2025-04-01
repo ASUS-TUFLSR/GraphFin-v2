@@ -44,6 +44,34 @@ const userResolver = {
         }
     },
 
+    login: async (_, {input}, context) => {
+            try {
+                const {username, password} = input;
+                const {user} = await context.authenticate("graphql-local", {username, password})
+
+                await context.login(user);
+            } catch (err) {
+                console.log("Error in login", err);
+                throw new Error(err.message || "Internal server error"); 
+            }
+    },
+
+    logout: async(_, __, context) => {
+        try {
+            await context.logout();
+            req.session.destroy((err) => {
+                if(err) throw err;
+            });
+            res.clearCookie("connect.sid");
+            
+            return {message: "logged out successfully"};
+
+        } catch (err) {
+           console.log("Error in logout", err);
+           throw new Error(err.message || "Internal server error");  
+        }
+    },
+
     Query: {
         
         users: (_,{req,res}) => {
