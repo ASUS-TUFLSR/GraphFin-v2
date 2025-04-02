@@ -32,10 +32,41 @@ const transactionResolver = {
     },
 
     Mutation:{
-        createTransaction: async (parents, args, context) => {},
-        updateTransaction: async (parents, args, context) => {},
-        deleteTransaction: async (parents, args, context) => {},
-    }
-}
+        createTransaction: async (_, {input}, context) => {
+            try {
+                const newTransaction = new Transaction({
+                    ...input,
+                    userId: context.getUser()._id
+                });
+
+                await newTransaction.save();
+            } catch (err) {
+                console.error("Error in getting transaction: ", err);
+                throw new Error("Error getting transaction");
+            }
+        },
+
+        updateTransaction: async (_, {input}) => {
+            try {
+                const updatedTransaction = Transaction.findByIdAndUpdate(input.transactionId, input, {new:true});
+                return updatedTransaction;                                
+            } catch (err) {
+                console.error("Error in getting transaction: ", err);
+                throw new Error("Error getting transaction");
+            }
+        },
+
+        deleteTransaction: async (_, {transactionId} ) => {
+            try {
+                const deletedTransaction = await Transaction.findByIdAndDelete(transactionId);
+                return deletedTransaction;
+            } catch (err) {
+                console.error("Error in getting transaction: ", err);
+                throw new Error("Error getting transaction");
+            }
+        },
+    },
+    // add transaction/user relationship
+};
 
 export default transactionResolver;
