@@ -10,8 +10,10 @@
 - Created .env file to store MONGO_URI and initialized a cluster in mongoDB atlas
 - Connected the database with the application
 - Will now proceed for user AUTH with PASSPORTJS
-
-
+- Integrated Tailwind CSS
+- Shifted to PORT-3000
+- Created A gridBackground from aceternity ui
+- Created Home,Login,SignUp,NotFound, and Transaction screen with routes in App.jsx
 
 - Tech Stack
   - HTML/CSS
@@ -23,4 +25,4 @@
   - GRAPHQL
   - PASSPORTJS
   - TAILWINDCSS
- 
+  - ACETERNITY UI
