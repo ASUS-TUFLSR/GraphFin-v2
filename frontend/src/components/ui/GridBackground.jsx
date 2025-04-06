@@ -15,10 +15,7 @@ const  GridBackground = ({children}) => {
       {/* Radial gradient for the container to give a faded look */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
-      <p
-        className="relative bg-gradient-to-b from-neutral-200 to-neutral-500 bg-clip-text py-8 text-4xl font-bold text-transparent sm:text-7xl">
-        {children}
-      </p>
+      {children}
     </div>
   );
 }
