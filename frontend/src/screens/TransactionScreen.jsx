@@ -24,9 +24,9 @@ const TransactionScreen = () => {
 			[name]: value,
 		}));
 	};
+   
 
-
-
+  console.log(formData)
 
 	return (
 		<div className='h-screen max-w-4xl mx-auto flex flex-col items-center'>
