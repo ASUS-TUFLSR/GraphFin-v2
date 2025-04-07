@@ -14,7 +14,9 @@ const TransactionScreen = () => {
 	});
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();		
+		e.preventDefault();	
+      console.log(formData)
+	
 	};
 
 	const handleInputChange = (e) => {
@@ -26,7 +28,6 @@ const TransactionScreen = () => {
 	};
    
 
-  console.log(formData)
 
 	return (
 		<div className='h-screen max-w-4xl mx-auto flex flex-col items-center'>
