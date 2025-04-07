@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import InputField from "../components/InputField";
 
-
 const LoginScreen = () => {
 
  const [loginData, setLoginData] = useState({
@@ -21,6 +20,7 @@ const LoginScreen = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+    console.log(loginData)
 	};
 
 	return (

@@ -14,6 +14,7 @@ const SignUpScreen = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log(signUpData)
 	};
 
 	const handleChange = (e) => {
