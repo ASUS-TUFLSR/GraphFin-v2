@@ -26,7 +26,7 @@ const TransactionScreen = () => {
 			[name]: value,
 		}));
 	};
-   
+//    Return transaction skeleton for/as a loader
 
 
 	return (
