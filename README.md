@@ -14,11 +14,16 @@
 - Shifted to PORT-3000
 - Created A gridBackground from aceternity ui
 - Created Home,Login,SignUp,NotFound, and Transaction screen with routes in App.jsx
+- Created a Skeleton for Transaction and 404 error handling
+- Created HomeScreen Which displays chart made with ChartsJs
+- Still working with Hard coded-data
+- Created Card and Cards which displays expense,investment,saving etc
 
 - Tech Stack
   - HTML/CSS
   - JAVASCRIPT
   - REACT
+  - CHART JS
   - NODEJS
   - EXPRESS
   - APOLLO SERVER
