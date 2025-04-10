@@ -2,6 +2,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Cards from "../components/Cards";
 import TransactionForm from '../components/TransactionForm'
+import Avatar from '../../public/avatar.png'
 import { MdLogout } from "react-icons/md";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -38,7 +39,7 @@ const chartData = {
 						Spend wisely, track wisely
 					</p>
 					<img
-						src={"https://res.cloudinary.com/djalu0nhc/image/upload/v1742828329/snlthqpyz78cbgo7zicn.jpg"}
+						src={Avatar}
 						className='w-11 h-11 rounded-full border cursor-pointer'
 						alt='Avatar'
 					/>
