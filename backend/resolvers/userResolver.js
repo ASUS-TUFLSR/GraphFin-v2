@@ -73,9 +73,8 @@ const userResolver = {
  },
 
 
-    Query: {
-        
-        authUser: async() => {
+    Query: {  
+        authUser: async(_, __, context) => {
            try {
             const user = await context.getUser();
             return user;
