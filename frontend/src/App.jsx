@@ -6,13 +6,19 @@ import LoginScreen from './screens/LoginScreen'
 import TransactionScreen from './screens/TransactionScreen'
 import NotFoundScreen from './screens/NotFoundScreen'
 import Header from './components/ui/Header'
+import { useQuery } from '@apollo/client'
+import { GET_AUTHENTICATED_USER } from './graphql/queries/userQuery'
 
 const App = () => {
 
-  const authUser = true ;
+  
+  const {loading, data, error} = useQuery(GET_AUTHENTICATED_USER);
+  console.log("Loading:",loading)
+  console.log("Authenticated User:", data)
+  console.log("Error:", error)
 
   return <>
-    {authUser && <Header/>}
+    {data.authUser && <Header/>}
       <Routes>
         <Route path='/' element={<HomeScreen/>} />
         <Route path='/login' element={<LoginScreen/>} />
