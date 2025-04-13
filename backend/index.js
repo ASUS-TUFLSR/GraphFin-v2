@@ -36,17 +36,17 @@ store.on("error", (err) => {
 }) // for debugging purpose
 
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false, // this option specifies whether to save the session to the store on every request. if we say true then we'll have multiple session for the same user
-    saveUninitialized: false,// this option specifies whether to save unintialized sessions
-    cookie:{
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days after it session will expire requiring to login again
-      httpOnly: true, // it will prevent Cross-site Scripting (XSS) attacks
-    },
-    store:store
-  })
-)
+	session({
+		secret: process.env.SESSION_SECRET,
+		resave: false, // this option specifies whether to save the session to the store on every request
+		saveUninitialized: false, // option specifies whether to save uninitialized sessions
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24 * 7,
+			httpOnly: true, // this option prevents the Cross-Site Scripting (XSS) attacks
+		},
+		store: store,
+	})
+);
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -8,6 +8,7 @@ import NotFoundScreen from './screens/NotFoundScreen'
 import Header from './components/ui/Header'
 import { useQuery } from '@apollo/client'
 import { GET_AUTHENTICATED_USER } from './graphql/queries/userQuery'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
 
@@ -18,7 +19,7 @@ const App = () => {
   console.log("Error:", error)
 
   return <>
-    {data.authUser && <Header/>}
+    {data?.authUser && <Header/>}
       <Routes>
         <Route path='/' element={<HomeScreen/>} />
         <Route path='/login' element={<LoginScreen/>} />
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/transaction/:id' element={<TransactionScreen/>} />
         <Route path='*' element={<NotFoundScreen/>} />
       </Routes>
+      <Toaster/>
   </>
 }
 
