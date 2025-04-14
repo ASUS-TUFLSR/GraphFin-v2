@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import SignUpScreen from './screens/SignUpScreen'
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -18,13 +18,15 @@ const App = () => {
   console.log("Authenticated User:", data)
   console.log("Error:", error)
 
+  if(loading) return null;
+
   return <>
     {data?.authUser && <Header/>}
       <Routes>
-        <Route path='/' element={<HomeScreen/>} />
-        <Route path='/login' element={<LoginScreen/>} />
-        <Route path='/signup' element={<SignUpScreen/>} />
-        <Route path='/transaction/:id' element={<TransactionScreen/>} />
+        <Route path='/' element={ data.authUser ? <HomeScreen/> : <Navigate to={"/login"}/> } />
+        <Route path='/login' element={ !data.authUser ? <LoginScreen/> : <Navigate to={"/"}/> } />
+        <Route path='/signup' element={ !data.authUser ? <SignUpScreen/> : <Navigate to={"/"}/> } />
+        <Route path='/transaction/:id' element={ data.authUser ? <TransactionScreen/> : <Navigate to={"/login"}/>} />
         <Route path='*' element={<NotFoundScreen/>} />
       </Routes>
       <Toaster/>
