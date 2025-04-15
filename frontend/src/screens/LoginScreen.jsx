@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import InputField from "../components/InputField";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../graphql/mutations/userMutation";
 
 const LoginScreen = () => {
 
@@ -9,6 +11,9 @@ const LoginScreen = () => {
 		password: "",
 	});
 
+	const [login, {loading}] = useMutation(LOGIN, {
+		refetchQueries: ['GetAuthenticatedUser'],
+	})
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -54,9 +59,9 @@ const LoginScreen = () => {
 									type='submit'
 									className='w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black  focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed
 									'
-									
+									disabled={loading}
 								>
-									Login
+									{loading ? 'Loading...' : 'Login'}
 								</button>
 							</div>
 						</form>

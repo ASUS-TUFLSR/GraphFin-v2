@@ -48,6 +48,7 @@ const userResolver = {
                 const {user} = await context.authenticate("graphql-local", {username, password})
 
                 await context.login(user);
+                return user;
             } catch (err) {
                 console.log("Error in login", err);
                 throw new Error(err.message || "Internal server error"); 
