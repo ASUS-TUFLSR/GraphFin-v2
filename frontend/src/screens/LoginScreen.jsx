@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../graphql/mutations/userMutation";
+import toast from "react-hot-toast";
 
 const LoginScreen = () => {
 
@@ -13,7 +14,7 @@ const LoginScreen = () => {
 
 	const [login, {loading}] = useMutation(LOGIN, {
 		refetchQueries: ['GetAuthenticatedUser'],
-	})
+	})  
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -25,7 +26,13 @@ const LoginScreen = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-    console.log(loginData)
+		try {
+			await login({ variables: {input: loginData} });
+		} catch (error) {
+			console.error("Error in logging in:". error);
+			toast.error(error.message);
+		}
+    
 	};
 
 	return (
