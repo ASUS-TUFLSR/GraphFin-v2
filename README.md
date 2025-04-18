@@ -18,6 +18,9 @@
 - Created HomeScreen Which displays chart made with ChartsJs
 - Still working with Hard coded-data
 - Created Card and Cards which displays expense,investment,saving etc
+- Logging and Logging Out the User
+- Creating transaction mutation using gql apollo client
+- 
 
 - Tech Stack
   - HTML/CSS
