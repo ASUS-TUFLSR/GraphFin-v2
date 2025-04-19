@@ -40,6 +40,7 @@ const transactionResolver = {
                 });
 
                 await newTransaction.save();
+                return newTransaction;
             } catch (err) {
                 console.error("Error in getting transaction: ", err);
                 throw new Error("Error getting transaction");
@@ -48,7 +49,7 @@ const transactionResolver = {
 
         updateTransaction: async (_, {input}) => {
             try {
-                const updatedTransaction = Transaction.findByIdAndUpdate(input.transactionId, input, {new:true});
+                const updatedTransaction = await Transaction.findByIdAndUpdate(input.transactionId, input, {new:true});
                 return updatedTransaction;                                
             } catch (err) {
                 console.error("Error in getting transaction: ", err);
