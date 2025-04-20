@@ -14,15 +14,19 @@ const categoryColorMap = {
 	// Add more categories and corresponding color classes as needed
 };
 
-const Card = ({ cardType}) => {
+const Card = ({ transaction }) => {
     
-    const cardClass = categoryColorMap[cardType]
+	let {category, amount, date, location, paymentType, description} = transaction;
+	const cardClass = categoryColorMap[category]
+	description = description[0]?.toUpperCase() + description.slice(1);
+    category = category[0]?.toUpperCase() + category.slice(1);
+
 
 	return (
 		<div className={`rounded-md p-4 bg-gradient-to-br ${cardClass}`}>
 			<div className='flex flex-col gap-3'>
 				<div className='flex flex-row items-center justify-between'>
-					<h2 className='text-lg font-bold text-white'>{cardType}</h2>
+					<h2 className='text-lg font-bold text-white'>{category}</h2>
 					<div className='flex items-center gap-2'>
 					
 						
@@ -33,22 +37,22 @@ const Card = ({ cardType}) => {
 				</div>
 				<p className='text-white flex items-center gap-1'>
 					<BsCardText />
-					Description: Salary
+					Description: {description}
 				</p>
 				<p className='text-white flex items-center gap-1'>
 					<MdOutlinePayments />
-					Payment Type: Cash
+					Payment Type: {paymentType}
 				</p>
 				<p className='text-white flex items-center gap-1'>
 					<FaSackDollar />
-					Amount: $56
+					Amount: ${amount}
 				</p>
 				<p className='text-white flex items-center gap-1'>
 					<FaLocationDot />
-					Location: New York
+					Location: {location || "N/A"}
 				</p>
 				<div className='flex justify-between items-center'>
-					<p className='text-xs text-black font-bold'>21 Sep 2007</p>
+					<p className='text-xs text-black font-bold'>{date}</p>
 					<img src={Avatar} className='h-8 w-8 border rounded-full' alt='' />
 				</div>
 			</div>
