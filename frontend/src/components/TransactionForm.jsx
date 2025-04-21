@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const TransactionForm = () => {
     
-	// TODO => Refetch once transaction is created
+	// TODO => When Relationships are added ,Change the refetch query a bit
 	const [createTransaction, {loading}] = useMutation(CREATE_TRANSACTION, {
 		refetchQueries: ["GetTransactions"]
 	})
