@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
 import {useParams} from 'react-router-dom'
 import { GET_TRANSACTION } from '../graphql/queries/transactionQuery';
@@ -11,17 +11,23 @@ const TransactionScreen = () => {
 	const {loading, data} = useQuery(GET_TRANSACTION, {
 		variables:{id:id},
 	})
+  
+	const transaction = data?.transaction || {};
+
+	const {description, paymentType, category, amount,location, date} = transaction;
+
 	console.log("Transaction Data:", data)
 	
 	const [formData, setFormData] = useState({
-		description: "",
-		paymentType: "",
-		category:"",                        
-		amount:"",
-		location:  "",
-		date: "",
+		description: description || "",
+		paymentType: paymentType || "",
+		category: category || "",                        
+		amount: amount || "",
+		location:  location || "",
+		date: date || "",
 	});
 
+	// Note data is re-rendered but state is'nt re-evaluated
 	const handleSubmit = async (e) => {
 		e.preventDefault();	
       console.log(formData)
@@ -37,6 +43,18 @@ const TransactionScreen = () => {
 	};
 //    Return transaction skeleton for/as a loader
 
+	useEffect(() => {
+		if(data){
+		setFormData({
+		description: description,
+		paymentType: paymentType,
+		category: category,                        
+		amount: amount,
+		location:  location,
+		date: date,
+		})	
+		}
+	}, [data])
 
 	return (
 		<div className='h-screen max-w-4xl mx-auto flex flex-col items-center'>
