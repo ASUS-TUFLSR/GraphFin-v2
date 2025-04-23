@@ -20,7 +20,9 @@
 - Created Card and Cards which displays expense,investment,saving etc
 - Logging and Logging Out the User
 - Creating transaction mutation using gql apollo client
-- 
+- Transaction Updation/Deletion working properly
+- By using Caching we are reducing the load time of the application by 40%
+- Only work to do is update ChartJS with Backend Data
 
 - Tech Stack
   - HTML/CSS
