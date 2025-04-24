@@ -17,7 +17,7 @@ const chartData = {
 	datasets: [
 		{
 			label: "%",
-			data: [13,4,3],
+			data: [13,4,3], 
 			backgroundColor: ["rgba(75, 192, 192)", "rgba(255, 99, 132)", "rgba(54, 162, 235)"],
 			borderColor: ["rgba(75, 192, 192)", "rgba(255, 99, 132)", "rgba(54, 162, 235, 1)"],
 			borderWidth: 1,
@@ -41,7 +41,7 @@ const chartData = {
 				client.resetStore();
 		} catch (error) {
 			console.error("Error logging out:", error)
-			toast.error(error.message)
+			toast.error(error.message);
 		}
 	};
 
