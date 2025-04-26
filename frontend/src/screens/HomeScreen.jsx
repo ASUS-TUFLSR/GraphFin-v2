@@ -73,6 +73,25 @@ const HomeScreen = () => {
 		}
 	}, [data]);
 
+	       const chartOptions = {
+          responsive: true,
+  animation: {
+    animateScale: true,
+    animateRotate: true,
+  },
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        color: '#374151', // Optional: make legend text look nice (gray-700)
+        font: {
+          size: 14,
+        },
+      },
+    },
+  },
+};
+
 	const handleLogout = async () => {
 		try {
 			await logout();
@@ -104,10 +123,11 @@ const HomeScreen = () => {
 				</div>
 				<div className='flex flex-wrap w-full justify-center items-center gap-6'>
 			
-						<div className='h-[330px] w-[330px] md:h-[360px] md:w-[360px]  '>
-							<Doughnut data={chartData} />
-						</div>
-					
+						{chartData.labels.length > 0 && (
+                           <div className='h-[330px] w-[330px] md:h-[360px] md:w-[360px]'>
+                            <Doughnut data={chartData} options={chartOptions} />
+                          </div>
+)}
 
 					<TransactionForm />
 				</div>
