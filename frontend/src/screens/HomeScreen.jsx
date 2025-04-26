@@ -73,24 +73,25 @@ const HomeScreen = () => {
 		}
 	}, [data]);
 
-	       const chartOptions = {
-          responsive: true,
-  animation: {
-    animateScale: true,
-    animateRotate: true,
-  },
-  plugins: {
-    legend: {
-      position: 'bottom',
-      labels: {
-        color: '#374151', // Optional: make legend text look nice (gray-700)
-        font: {
-          size: 14,
-        },
-      },
+    
+	const chartOptions = {
+        responsive: true,
+        animation: {
+        animateScale: true,
+        animateRotate: true,
     },
-  },
-};
+    plugins: {
+      legend: {
+          position: 'bottom',
+          labels: {
+          color: '#374151', 
+          font: {
+           size: 14,
+         },
+        },
+       },
+      },
+     };
 
 	const handleLogout = async () => {
 		try {
