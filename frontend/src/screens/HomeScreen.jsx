@@ -1,27 +1,28 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Cards from "../components/Cards";
-import TransactionForm from '../components/TransactionForm'
+import TransactionForm from "../components/TransactionForm";
 import Avatar from '../../public/avatar.png'
+
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@apollo/client";
-import { LOGOUT } from "../graphql/mutations/userMutation";
+import { LOGOUT } from "../graphql/mutations/userMutation"
 import { GET_TRANSACTION_STATISTICS } from "../graphql/queries/transactionQuery";
 import { useEffect, useState } from "react";
+
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HomeScreen = () => {
-	
-	
-	const {data} = useQuery(GET_TRANSACTION_STATISTICS);
+	const { data } = useQuery(GET_TRANSACTION_STATISTICS);
 
-    const [logout, {loading, client}] = useMutation(LOGOUT, {
-		refetchQueries:["GetAuthenticatedUser"]
-	})
+	const [logout, { loading, client }] = useMutation(LOGOUT, {
+		refetchQueries: ["GetAuthenticatedUser"],
+	});
 
-   const [chartData, setChartData] = useState({
+	const [chartData, setChartData] = useState({
 		labels: [],
 		datasets: [
 			{
@@ -75,15 +76,14 @@ const HomeScreen = () => {
 	const handleLogout = async () => {
 		try {
 			await logout();
-			// Clear the Apollo Client cache from the DOCS
+			// Clear the Apollo Client cache FROM THE DOCS
 			// https://www.apollographql.com/docs/react/caching/advanced-topics/#:~:text=Resetting%20the%20cache,any%20of%20your%20active%20queries
-				client.resetStore();
+			client.resetStore();
 		} catch (error) {
-			console.error("Error logging out:", error)
+			console.error("Error logging out:", error);
 			toast.error(error.message);
 		}
 	};
-
 	console.log(data)
 
 	return (
@@ -103,10 +103,11 @@ const HomeScreen = () => {
 					{loading && <div className='w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin'></div>}
 				</div>
 				<div className='flex flex-wrap w-full justify-center items-center gap-6'>
-					
+			
 						<div className='h-[330px] w-[330px] md:h-[360px] md:w-[360px]  '>
 							<Doughnut data={chartData} />
 						</div>
+					
 
 					<TransactionForm />
 				</div>

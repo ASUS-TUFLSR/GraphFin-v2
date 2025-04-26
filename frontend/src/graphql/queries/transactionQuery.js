@@ -30,7 +30,7 @@ export const GET_TRANSACTION = gql`
 
 export const GET_TRANSACTION_STATISTICS = gql`
    query getTransactionStatistics {
-      categoryStatitics {
+      categoryStatistics {
          category
          totalAmount
       }

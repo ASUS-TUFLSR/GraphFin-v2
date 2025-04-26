@@ -28,7 +28,7 @@ const transactionResolver = {
             }
         },
 
-        categoryStatitics: async (_, __, context) => {
+        categoryStatistics: async (_, __, context) => {
             if(!context.getUser()) throw new Error("Unauthorized");
             
             const userId = context.getUser()._id;
