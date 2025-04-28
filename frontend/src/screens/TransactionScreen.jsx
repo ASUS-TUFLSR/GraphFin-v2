@@ -15,7 +15,9 @@ const TransactionScreen = () => {
 		variables:{id:id},
 	})
   
-    const [updateTransaction, {loading: updatingTransaction}] = useMutation(UPDATE_TRANSACTION)
+    const [updateTransaction, {loading: updatingTransaction}] = useMutation(UPDATE_TRANSACTION,{
+		refetchQueries:['GetTransactions', 'GetTransactionStatistics']
+	})
 
 	const transaction = data?.transaction || {};
 

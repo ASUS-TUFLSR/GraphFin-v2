@@ -9,6 +9,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { LOGOUT } from "../graphql/mutations/userMutation"
 import { GET_TRANSACTION_STATISTICS } from "../graphql/queries/transactionQuery";
 import { useEffect, useState } from "react";
+import { GET_AUTHENTICATED_USER } from "../graphql/queries/userQuery";
 
 
 
@@ -16,6 +17,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HomeScreen = () => {
 	const { data } = useQuery(GET_TRANSACTION_STATISTICS);
+	const { data: authUserData } = useQuery(GET_AUTHENTICATED_USER);
 
 	const [logout, { loading, client }] = useMutation(LOGOUT, {
 		refetchQueries: ["GetAuthenticatedUser"],
@@ -103,7 +105,6 @@ const HomeScreen = () => {
 			toast.error(error.message);
 		}
 	};
-	console.log(data)
 
 	return (
 		<>
@@ -113,7 +114,7 @@ const HomeScreen = () => {
 						Spend wisely, track wisely
 					</p>
 					<img
-						src={Avatar}
+						src={authUserData?.authUser.profilePicture || Avatar}
 						className='w-11 h-11 rounded-full border cursor-pointer'
 						alt='Avatar'
 					/>
