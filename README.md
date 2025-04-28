@@ -23,6 +23,7 @@
 - Transaction Updation/Deletion working properly
 - By using Caching we are reducing the load time of the application by 40%
 - Only work to do is update ChartJS with Backend Data
+- Updating ChartJs with Real Time Data, 
 
 - Tech Stack
   - HTML/CSS
