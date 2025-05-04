@@ -7,6 +7,7 @@ const Cards = () => {
 
 		const { data, loading } = useQuery(GET_TRANSACTIONS);
 		const { data:authUserId } = useQuery(GET_AUTHENTICATED_USER);
+		
 		const { data:userAndTransactions } = useQuery(GET_USER_AND_TRANSACTIONS, {
 			variables:{
 				userId: authUserId?.authUser?._id

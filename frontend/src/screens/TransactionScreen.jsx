@@ -14,6 +14,8 @@ const TransactionScreen = () => {
 	const {loading, data} = useQuery(GET_TRANSACTION, {
 		variables:{id:id},
 	})
+
+	console.log("Transaction, ", data)
   
     const [updateTransaction, {loading: updatingTransaction}] = useMutation(UPDATE_TRANSACTION,{
 		refetchQueries:['GetTransactions', 'GetTransactionStatistics']
@@ -23,7 +25,7 @@ const TransactionScreen = () => {
 
 	const {description, paymentType, category, amount,location, date} = transaction;
 
-	console.log("Transaction Data:", data)
+	
 	
     
 
