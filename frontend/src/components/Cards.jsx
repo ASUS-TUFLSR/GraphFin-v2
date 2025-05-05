@@ -14,6 +14,9 @@ const Cards = () => {
 			}
 		});
 
+		const ProfilePic = userAndTransactions?.user?.profilePicture;
+		console.log("profilePic", ProfilePic)
+
 		console.log("userAndTransactions :", userAndTransactions)
 		console.log(authUserId.authUser._id)
 
@@ -23,7 +26,7 @@ const Cards = () => {
 			<div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-start mb-20'>
 				{!loading &&
 					data.transactions.map((transaction) => (
-						<Card key={transaction._id} transaction={transaction} />
+						<Card key={transaction._id} transaction={transaction} authUser={ProfilePic} />
 					))}
 			</div>
 			{!loading && data?.transactions?.length === 0 && (
