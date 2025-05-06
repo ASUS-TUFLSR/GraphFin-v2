@@ -4,7 +4,6 @@ import { MdOutlinePayments } from "react-icons/md";
 import { FaSackDollar, FaTrash } from "react-icons/fa6";
 import { HiPencilAlt } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import Avatar from '../../public/avatar.png'
 import { useMutation } from "@apollo/client";
 import { DELETE_TRANSACTION } from "../graphql/mutations/transactionMutation";
 import toast from "react-hot-toast";
@@ -72,7 +71,7 @@ const Card = ({ transaction, authUser }) => {
 				</p>
 				<div className='flex justify-between items-center'>
 					<p className='text-xs text-black font-bold'>{date}</p>
-					<img src="https://avatar.iran.liara.run/public/boy?username=Trunkss" className='h-8 w-8 border rounded-full' alt='' />
+					<img src={authUser} className='h-8 w-8 border rounded-full' alt='' />
 				</div>
 			</div>
 		</div>

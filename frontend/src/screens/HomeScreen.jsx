@@ -2,7 +2,6 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Cards from "../components/Cards";
 import TransactionForm from "../components/TransactionForm";
-import Avatar from '../../public/avatar.png'
 import { MdLogout } from "react-icons/md";
 import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@apollo/client";
@@ -106,6 +105,8 @@ const HomeScreen = () => {
 		}
 	};
 
+	console.log("HomeSCreen",authUserData)
+
 	return (
 		<>
 			<div className='flex flex-col gap-6 items-center max-w-7xl mx-auto z-20 relative justify-center'>
@@ -114,7 +115,7 @@ const HomeScreen = () => {
 						Spend wisely, track wisely
 					</p>
 					<img
-						src={authUserData?.authUser.profilePicture || Avatar}
+						src={authUserData?.authUser.profilePicture}
 						className='w-11 h-11 rounded-full border cursor-pointer'
 						alt='Avatar'
 					/>
