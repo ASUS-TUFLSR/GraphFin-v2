@@ -1,5 +1,6 @@
 import express from 'express';
 import http from 'http';
+import path from 'path';
 import cors from "cors";
 import dotenv from 'dotenv';
 import passport from 'passport';
@@ -20,6 +21,7 @@ dotenv.config(); // If don't call the .envfn() we won't be able to use env varia
 
 configurePassport();
 
+const __dirname = path.resolve();
 const app = express();
 const httpServer = http.createServer(app);
 
@@ -31,9 +33,9 @@ const store = new MongoDBStore({
 
 })
 
-store.on("error", (err) => {
-  console.log(err)
-}) // for debugging purpose
+// store.on("error", (err) => {
+//   console.log(err)
+// }) // for debugging purpose
 
 app.use(
 	session({
@@ -66,15 +68,18 @@ app.use(
     credentials: true,
   }),
   express.json(),
-  // expressMiddleware accepts the same arguments:
-  // an Apollo Server instance and optional configuration options
   expressMiddleware(server, {
-    // context is basically object which is shared across all resolvers
     context: async ({ req, res }) => buildContext({ req, res }),
   }),
 );
 
-// Modified server startup
+// npm run build's optimized version of your application
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+app.get("*", (req,res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+})
+
 await new Promise((resolve) =>
   httpServer.listen({ port: 4000 }, resolve),
 );

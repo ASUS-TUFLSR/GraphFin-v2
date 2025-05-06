@@ -105,7 +105,6 @@ const HomeScreen = () => {
 		}
 	};
 
-	console.log("HomeSCreen",authUserData)
 
 	return (
 		<>

@@ -24,6 +24,9 @@
 - By using Caching we are reducing the load time of the application by 40%
 - Only work to do is update ChartJS with Backend Data
 - Updating ChartJs with Real Time Data, 
+- ChartJs working properly
+- Updated User Avatar
+- Created Relationship's between User and Transaction for Future Use
 
 - Tech Stack
   - HTML/CSS

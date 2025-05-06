@@ -15,10 +15,7 @@ const Cards = () => {
 		});
 
 		const ProfilePic = userAndTransactions?.user?.profilePicture;
-		console.log("profilePic", ProfilePic)
-
-		console.log("userAndTransactions :", userAndTransactions)
-		console.log(authUserId.authUser._id)
+		
 
 	return (
 		<div className='w-full px-10 min-h-[40vh]'>

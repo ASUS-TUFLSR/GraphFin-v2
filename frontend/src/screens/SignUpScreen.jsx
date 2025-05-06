@@ -21,7 +21,6 @@ const SignUpScreen = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(signUpData)
 		try {
 			await signup({
 				variables:{
@@ -29,7 +28,6 @@ const SignUpScreen = () => {
 				}
 			})
 		} catch (error) {
-			console.log("Error:", error);
 			toast.error(error.message);
 		}
 	};
