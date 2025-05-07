@@ -27,6 +27,8 @@
 - ChartJs working properly
 - Updated User Avatar
 - Created Relationship's between User and Transaction for Future Use
+- Added Cron.Js which helps scheduled tasks that run periodically at fixed intervals or specific times
+
 
 - Tech Stack
   - HTML/CSS

@@ -14,12 +14,14 @@ import mergedResolvers from "./resolvers/index.js"
 import mergedTypeDefs from "./typeDefs/index.js"
 import { connectDB } from './db/connectDB.js';
 import { configurePassport } from './passport/passportConfig.js';
+import job from './cron.js';
 
 
 
 dotenv.config(); // If don't call the .envfn() we won't be able to use env variables
 
 configurePassport();
+job.start();
 
 const __dirname = path.resolve();
 const app = express();
