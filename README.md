@@ -1,44 +1,143 @@
-# GraphQl + Finance = GraphFin-v2
+# 📊 GraphQl + Finance = GraphFin-v2
 
-- Initialized the project
-- Created Backend and Frontend Folders and installed dependecies
-- Created dummyData of 5 users
-- Created userTypeDef and transactionTypeDef which is a Type definitions to define the shape of the data available in the GraphQL API. They specify the types of objects that can be queried and the relationships between them.
-- Created userResolver which is a Resolver functions that determine how to fetch the data associated with each field in the schema.
-- Created index.js file in resolvers folder which will merger user & transaction resolver with mergerResolvers fn()
-- Created mongoose model one for user and other one for transaction they'll hold Schema assigned to it
-- Created .env file to store MONGO_URI and initialized a cluster in mongoDB atlas
-- Connected the database with the application
-- Will now proceed for user AUTH with PASSPORTJS
-- Integrated Tailwind CSS
-- Shifted to PORT-3000
-- Created A gridBackground from aceternity ui
-- Created Home,Login,SignUp,NotFound, and Transaction screen with routes in App.jsx
-- Created a Skeleton for Transaction and 404 error handling
-- Created HomeScreen Which displays chart made with ChartsJs
-- Still working with Hard coded-data
-- Created Card and Cards which displays expense,investment,saving etc
-- Logging and Logging Out the User
-- Creating transaction mutation using gql apollo client
-- Transaction Updation/Deletion working properly
-- By using Caching we are reducing the load time of the application by 40%
-- Only work to do is update ChartJS with Backend Data
-- Updating ChartJs with Real Time Data, 
-- ChartJs working properly
-- Updated User Avatar
-- Created Relationship's between User and Transaction for Future Use
-- Added Cron.Js which helps scheduled tasks that run periodically at fixed intervals or specific times
+GraphFin-v2 is a **full-stack finance tracker** powered by **GraphQL** and **React**, designed to help you manage and visualize your expenses, investments, and savings in real-time.  
+Built with performance, scalability, and modern UI in mind — featuring live charts, authentication, caching, and scheduled tasks.
+
+---
+
+## 🚀 Features
+
+- **User Authentication** with PassportJS (Login/Logout/Signup)
+- **GraphQL API** for flexible data querying
+- **Real-time Charts** with Chart.js (updated from backend)
+- **Transaction Management**:
+  - Create, Update, Delete
+  - Instant UI updates via Apollo Cache
+- **Relationships** between User ↔ Transactions
+- **Performance Boost** with Apollo Client caching (~40% faster load)
+- **Scheduled Tasks** with Cron.js (e.g., monthly summaries, reminders)
+- **Responsive UI** with Tailwind CSS & Aceternity UI
+- **Error Handling** & Skeleton loaders for smooth UX
+- **MongoDB Atlas** for cloud database hosting
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- HTML, CSS, JavaScript
+- React
+- Tailwind CSS
+- Aceternity UI
+- Chart.js
+- Apollo Client
+
+**Backend**
+- Node.js
+- Express.js
+- Apollo Server
+- GraphQL
+- PassportJS (Auth)
+- Mongoose (MongoDB ORM)
+- Cron.js (Scheduled tasks)
+
+**Database**
+- MongoDB Atlas (Cloud)
+
+---
+
+## 📂 Folder Structure
+GraphFin-v2/
+│
+├── backend/
+│ ├── models/ # Mongoose Schemas
+│ ├── resolvers/ # GraphQL resolvers
+│ ├── typeDefs/ # GraphQL type definitions
+│ ├── index.js # Server entry point
+│ ├── .env # Environment variables (MONGO_URI, etc.)
+│ └── package.json
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/ # UI Components (Cards, Charts, etc.)
+│ │ ├── pages/ # Home, Login, SignUp, Transaction, NotFound
+│ │ ├── App.jsx # App Routes
+│ │ └── index.js
+│ ├── public/
+│ └── package.json
+│
+└── README.md
 
 
-- Tech Stack
-  - HTML/CSS
-  - JAVASCRIPT
-  - REACT
-  - CHART JS
-  - NODEJS
-  - EXPRESS
-  - APOLLO SERVER
-  - GRAPHQL
-  - PASSPORTJS
-  - TAILWINDCSS
-  - ACETERNITY UI
+---
+
+## ⚙️ Installation & Setup
+
+### **1️⃣ Clone the Repository**
+```bash
+git clone https://github.com/ASUS-TUFLSR/GraphFin-v2
+cd GraphFin-v2
+
+2️⃣ Backend Setup
+bash
+cd backend
+npm install
+
+Create a .env file in the backend directory:
+
+MONGO_URI=your_mongodb_atlas_uri
+PORT=3001
+
+Start the backend:
+bash
+npm run dev
+
+3️⃣ Frontend Setup
+bash
+cd ../frontend
+npm install
+
+Start the frontend:
+
+bash
+npm run dev
+
+🔑 Environment Variables
+Backend .env file should contain:
+ini
+MONGO_URI=your_mongodb_atlas_uri
+PORT=3001
+SESSION_SECRET=your_secret_key
+
+📊 GraphQL Schema Overview
+User 
+graphql
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  transactions: [Transaction]
+}
+
+Transaction
+type Transaction {
+  id: ID!
+  type: String!  # expense, investment, saving
+  amount: Float!
+  date: String!
+  user: User!
+}
+
+🛠️ Future Enhancements
+✅ Offline mode with Apollo Client persistence
+
+✅ Export transactions as CSV/PDF
+
+✅ Real-time updates with GraphQL Subscriptions
+
+✅ Dark/Light mode toggle
+
+✅ AI-powered financial insights
+
+📜 License
+This project is licensed under the MIT License.
